@@ -1,0 +1,24 @@
+
+/* FINDIT - RESPONSIVE GLOBAL RULES */
+
+@media (max-width: 900px) {
+    img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}

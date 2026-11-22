@@ -1,0 +1,67 @@
+
+# ==========================================
+# FINDIT - GITIGNORE
+# ==========================================
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Node.js dependencies
+node_modules/
+**/node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Runtime files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Uploaded temporary files
+tmp/
+temp/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Build and coverage output
+dist/
+build/
+coverage/
+
+# Cache
+.cache/
+.parcel-cache/
+.npm/
+
+# Test output
+.nyc_output/
+
+# Temporary backup files
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# ==========================================
+# END
+# ==========================================
+# User-uploaded item images
+uploads/*
+!uploads/.gitkeep

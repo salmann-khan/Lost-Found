@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Received Claims | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/received-claims.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/received-claims.js" defer></script>
+</head>
+
+<body class="received-claims-page">
+
+    <header class="claims-navbar">
+
+        <a href="../index.html" class="brand">
+            Find<span>It.</span>
+        </a>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="browse.html">Browse Items</a>
+        </nav>
+
+        <a href="dashboard.html" class="back-button">
+            ← Dashboard
+        </a>
+
+    </header>
+
+    <main class="claims-container">
+
+        <section class="claims-hero">
+
+            <div>
+                <p class="claims-eyebrow">CLAIM MANAGEMENT</p>
+
+                <h1>Received Claims</h1>
+
+                <p>
+                    Review ownership requests submitted for items
+                    you reported as found.
+                </p>
+            </div>
+
+            <div class="claims-hero-icon">📋</div>
+
+        </section>
+
+        <section class="claims-stats">
+
+            <article class="stat-card">
+                <span class="stat-icon">📁</span>
+                <div>
+                    <strong id="total-count">0</strong>
+                    <span>Total claims</span>
+                </div>
+            </article>
+
+            <article class="stat-card pending-stat">
+                <span class="stat-icon">⏳</span>
+                <div>
+                    <strong id="pending-count">0</strong>
+                    <span>Pending</span>
+                </div>
+            </article>
+
+            <article class="stat-card approved-stat">
+                <span class="stat-icon">✓</span>
+                <div>
+                    <strong id="approved-count">0</strong>
+                    <span>Approved</span>
+                </div>
+            </article>
+
+            <article class="stat-card rejected-stat">
+                <span class="stat-icon">✕</span>
+                <div>
+                    <strong id="rejected-count">0</strong>
+                    <span>Rejected</span>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="claims-content">
+
+            <div class="claims-section-heading">
+                <div>
+                    <h2>Ownership requests</h2>
+                    <p>Review each request carefully before making a decision.</p>
+                </div>
+
+                <button type="button" id="refresh-claims" class="refresh-button">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div class="claims-filter">
+
+                <button class="filter-button active" data-filter="all">
+                    All claims
+                </button>
+
+                <button class="filter-button" data-filter="pending">
+                    Pending
+                </button>
+
+                <button class="filter-button" data-filter="approved">
+                    Approved
+                </button>
+
+                <button class="filter-button" data-filter="rejected">
+                    Rejected
+                </button>
+
+            </div>
+
+            <div id="claims-loading" class="claims-state">
+                <div class="claims-spinner"></div>
+                <p>Loading received claims...</p>
+            </div>
+
+            <div id="claims-error" class="claims-state error-state" hidden>
+                <span>⚠️</span>
+                <h3>Unable to load claims</h3>
+                <p id="claims-error-text">Please try again.</p>
+                <button type="button" id="retry-claims" class="primary-button">
+                    Try again
+                </button>
+            </div>
+
+            <div id="claims-empty" class="claims-empty" hidden>
+                <div>📭</div>
+                <h3>No claims yet</h3>
+                <p>
+                    Ownership requests for your found items
+                    will appear here.
+                </p>
+            </div>
+
+            <div id="claims-list" class="claims-list"></div>
+
+        </section>
+
+        <section class="privacy-reminder">
+            <span>🔒</span>
+            <div>
+                <strong>Private ownership information</strong>
+                <p>
+                    Identifying details are confidential.
+                    Use them only to verify ownership and never
+                    display them publicly.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Claim review dialog -->
+
+    <div id="review-modal" class="review-modal" hidden>
+
+        <div class="review-modal-content">
+
+            <button
+                type="button"
+                id="close-review-modal"
+                class="close-modal"
+                aria-label="Close dialog">
+                ×
+            </button>
+
+            <p class="modal-eyebrow">OWNERSHIP VERIFICATION</p>
+
+            <h2 id="modal-title">Review ownership claim</h2>
+
+            <p id="modal-item-title" class="modal-item-title"></p>
+
+            <div class="review-information">
+
+                <div>
+                    <span>Claimant</span>
+                    <strong id="modal-claimant"></strong>
+                </div>
+
+                <div>
+                    <span>Claim reason</span>
+                    <p id="modal-reason"></p>
+                </div>
+
+                <div>
+                    <span>Private identifying details</span>
+                    <p id="modal-identifying-details"></p>
+                </div>
+
+            </div>
+
+            <label for="review-note">Review note (optional)</label>
+
+            <textarea
+                id="review-note"
+                maxlength="1000"
+                rows="3"
+                placeholder="Write a message for the student..."></textarea>
+
+            <p id="review-error" class="review-error" hidden></p>
+
+            <div class="review-actions">
+
+                <button type="button" id="reject-claim" class="reject-button">
+                    Reject claim
+                </button>
+
+                <button type="button" id="approve-claim" class="approve-button">
+                    Approve claim
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+<script src="../js/components/logout-widget.js"></script>
+</body>
+</html>

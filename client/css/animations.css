@@ -1,0 +1,263 @@
+
+/* ==========================================
+   FINDIT - FORCED ANIMATION SYSTEM
+   Animations enabled regardless of system preference
+========================================== */
+
+/* 1. KEYFRAMES */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes mainFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(3deg);
+    }
+}
+
+@keyframes iconFloatOne {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-22px) rotate(8deg);
+    }
+}
+
+@keyframes iconFloatTwo {
+    0%, 100% {
+        transform: translateY(0) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-17px) rotate(-8deg);
+    }
+}
+
+@keyframes iconFloatThree {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-14px) scale(1.15);
+    }
+}
+
+@keyframes backgroundFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes messagePop {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 2. PAGE ENTRANCE */
+
+.auth-container {
+    animation: fadeUp 0.8s ease both !important;
+}
+
+.auth-form-section {
+    animation: slideInLeft 0.8s ease both !important;
+}
+
+.auth-visual {
+    animation: slideInRight 0.8s ease both !important;
+}
+
+/* 3. MAIN ILLUSTRATION */
+
+.auth-illustration {
+    animation: mainFloat 4s ease-in-out infinite !important;
+    will-change: transform;
+}
+
+/* 4. ALL THREE DECORATIVE ICONS */
+
+.auth-decoration-one {
+    animation: iconFloatOne 4.5s ease-in-out infinite !important;
+    will-change: transform;
+}
+
+.auth-decoration-two {
+    animation: iconFloatTwo 5.5s ease-in-out infinite !important;
+    will-change: transform;
+}
+
+.auth-decoration-three {
+    animation: iconFloatThree 3.5s ease-in-out infinite !important;
+    will-change: transform;
+}
+
+/* 5. MOVING BACKGROUND */
+
+.auth-page {
+    background-size: 200% 200%;
+    animation: backgroundFlow 12s ease infinite !important;
+}
+
+/* 6. BUTTON INTERACTIONS */
+
+.auth-button {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.auth-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(108, 99, 255, 0.3);
+}
+
+.auth-button:active {
+    transform: scale(0.97);
+}
+
+/* Moving button shine */
+
+.auth-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+}
+
+.auth-button:hover::before {
+    left: 150%;
+}
+
+/* 7. INPUT INTERACTIONS */
+
+.auth-input {
+    transition: all 0.3s ease !important;
+}
+
+.auth-input:focus {
+    transform: translateY(-2px);
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.13);
+}
+
+.auth-field {
+    transition: transform 0.25s ease !important;
+}
+
+.auth-field:focus-within {
+    transform: translateX(3px);
+}
+
+/* 8. DECORATIVE ICON HOVER */
+
+.auth-decoration {
+    transition: background 0.3s ease, filter 0.3s ease !important;
+}
+
+.auth-decoration:hover {
+    background: rgba(255, 255, 255, 0.3);
+    filter: brightness(1.15);
+}
+
+/* 9. LINKS */
+
+.auth-link {
+    transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.auth-link:hover {
+    color: #5148D8;
+    transform: translateY(-2px);
+}
+
+/* 10. PASSWORD BUTTON */
+
+.toggle-password {
+    transition: color 0.2s ease !important;
+}
+
+.toggle-password:hover {
+    color: #5148D8;
+}
+
+/* 11. FORM FEEDBACK */
+
+.auth-message.success,
+.auth-message.error {
+    animation: messagePop 0.35s ease both !important;
+}
+
+/* 12. LOADING SPINNER */
+
+.auth-spinner {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #FFFFFF;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite !important;
+}
+
+/* 13. NO REDUCED-MOTION OVERRIDE
+   Animations intentionally remain enabled.
+   Do not add a prefers-reduced-motion rule here.
+*/

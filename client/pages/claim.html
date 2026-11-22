@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ownership Claim | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/claim.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/claim.js" defer></script>
+</head>
+
+<body class="claim-page">
+
+    <header class="claim-navbar">
+        <a href="../index.html" class="brand">
+            Find<span>It.</span>
+        </a>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="browse.html">Browse Items</a>
+        </nav>
+
+        <a href="browse.html" class="back-button">
+            ← Browse Items
+        </a>
+    </header>
+
+    <main class="claim-container">
+
+        <div class="claim-breadcrumb">
+            <a href="browse.html">Browse Items</a>
+            <span>/</span>
+            <span>Ownership Claim</span>
+        </div>
+
+        <section class="claim-card">
+
+            <div class="claim-heading">
+                <div class="claim-heading-icon">💜</div>
+
+                <p class="claim-eyebrow">OWNERSHIP VERIFICATION</p>
+
+                <h1>Claim Your Belonging</h1>
+
+                <p>
+                    Tell us why you believe this item belongs to you.
+                    Your information will be reviewed privately.
+                </p>
+            </div>
+
+            <!-- Selected item information -->
+            <div id="item-summary" class="item-summary" hidden>
+                <div class="summary-image">
+                    <img id="summary-image" alt="Selected item" hidden>
+                    <span id="summary-placeholder">📦</span>
+                </div>
+
+                <div class="summary-information">
+                    <span>YOU ARE CLAIMING</span>
+                    <h2 id="summary-title">Loading item...</h2>
+                    <p id="summary-category"></p>
+                </div>
+            </div>
+
+            <div id="loading-message" class="form-message">
+                Loading item information...
+            </div>
+
+            <div id="error-message" class="form-message error-message" hidden>
+                <p id="error-text">Unable to load this item.</p>
+                <a href="browse.html" class="secondary-button">
+                    Return to Browse
+                </a>
+            </div>
+
+            <form id="claim-form" hidden>
+
+                <div class="form-group">
+                    <label for="claim-reason">
+                        Why do you believe this item is yours?
+                    </label>
+
+                    <textarea
+                        id="claim-reason"
+                        name="reason"
+                        rows="4"
+                        maxlength="1000"
+                        placeholder="Explain where you lost it and why you believe this is your item..."
+                        required
+                    ></textarea>
+
+                    <span class="field-hint">
+                        Maximum 1000 characters.
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="identifying-details">
+                        Private identifying details
+                    </label>
+
+                    <textarea
+                        id="identifying-details"
+                        name="identifyingDetails"
+                        rows="5"
+                        maxlength="1500"
+                        placeholder="Describe unique marks, stickers, contents, serial details or other features that can help verify ownership..."
+                        required
+                    ></textarea>
+
+                    <span class="field-hint">
+                        Maximum 1500 characters. Only authorized reviewers
+                        should access these details.
+                    </span>
+                </div>
+
+                <div class="privacy-notice">
+                    <span>🔒</span>
+
+                    <div>
+                        <strong>Your information is private</strong>
+                        <p>
+                            These answers are submitted for ownership
+                            verification and are not displayed on the
+                            public item listing.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="success-message" class="success-message" hidden>
+                    <span>✓</span>
+                    <div>
+                        <strong>Claim submitted successfully!</strong>
+                        <p>Your claim is now waiting for admin review.</p>
+                    </div>
+                </div>
+
+                <div id="submit-error" class="submit-error" hidden></div>
+
+                <button
+                    type="submit"
+                    id="submit-claim"
+                    class="submit-button"
+                >
+                    Submit Ownership Claim →
+                </button>
+
+                <a href="browse.html" class="cancel-link">
+                    Cancel and return to Browse Items
+                </a>
+
+            </form>
+
+        </section>
+
+    </main>
+<script src="../js/components/logout-widget.js"></script>
+</body>
+</html>

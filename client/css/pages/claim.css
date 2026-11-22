@@ -1,0 +1,445 @@
+
+/* ==========================================
+   FINDIT - OWNERSHIP CLAIM PAGE
+========================================== */
+
+.claim-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 8% 25%, #eeeaff 0%, transparent 30%),
+        radial-gradient(ellipse at 92% 65%, #fff0e4 0%, transparent 28%),
+        #f9f8ff;
+}
+
+/* NAVBAR */
+
+.claim-navbar {
+    min-height: 78px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #eeebfa;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(15px);
+}
+
+.claim-navbar .brand {
+    color: #25243a;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+.claim-navbar .brand span {
+    color: #6c63ff;
+}
+
+.claim-navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.claim-navbar nav a {
+    color: #77768a;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.claim-navbar nav a:hover {
+    color: #6c63ff;
+}
+
+.claim-navbar .back-button {
+    padding: 12px 18px;
+    border-radius: 11px;
+    background: #f0eeff;
+    color: #6258e9;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.claim-navbar .back-button:hover {
+    background: #e6e2ff;
+}
+
+/* PAGE LAYOUT */
+
+.claim-container {
+    width: min(760px, 92%);
+    margin: 45px auto 80px;
+}
+
+.claim-breadcrumb {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: #9995ab;
+    font-size: 13px;
+}
+
+.claim-breadcrumb a {
+    color: #6c63ff;
+    font-weight: 700;
+}
+
+/* MAIN CARD */
+
+.claim-card {
+    padding: 38px;
+    background: white;
+    border: 1px solid #eeebfa;
+    border-radius: 25px;
+    box-shadow: 0 18px 50px rgba(45, 35, 100, 0.07);
+    animation: fadeUp 0.6s ease both;
+}
+
+/* HEADING */
+
+.claim-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.claim-heading-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 17px;
+    border-radius: 20px;
+    background: #eeecff;
+    font-size: 30px;
+}
+
+.claim-eyebrow {
+    color: #8178ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.claim-heading h1 {
+    color: #25243a;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.claim-heading > p:last-child {
+    max-width: 480px;
+    margin: 0 auto;
+    color: #77768a;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ITEM SUMMARY */
+
+.item-summary {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid #eeebfa;
+    border-radius: 16px;
+    background: #faf9ff;
+}
+
+.item-summary[hidden] {
+    display: none !important;
+}
+
+.summary-image {
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 13px;
+    background: #eeecff;
+    font-size: 35px;
+}
+
+.summary-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.summary-image img[hidden] {
+    display: none;
+}
+
+.summary-information {
+    min-width: 0;
+}
+
+.summary-information > span {
+    color: #8178ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.summary-information h2 {
+    color: #302d49;
+    font-size: 17px;
+    margin: 6px 0;
+    overflow-wrap: anywhere;
+}
+
+.summary-information p {
+    color: #9290a4;
+    font-size: 12px;
+}
+
+/* FORM */
+
+.form-group {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 23px;
+}
+
+.form-group label {
+    color: #39364f;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group textarea {
+    width: 100%;
+    min-height: 110px;
+    resize: vertical;
+    padding: 15px;
+    border: 1px solid #e9e6f3;
+    border-radius: 13px;
+    outline: none;
+    background: #faf9ff;
+    color: #302d49;
+    font-size: 13px;
+    line-height: 1.7;
+    transition: 0.25s ease;
+}
+
+.form-group textarea:focus {
+    border-color: #8178ff;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.09);
+}
+
+.form-group textarea::placeholder {
+    color: #a09db1;
+}
+
+.field-hint {
+    color: #9995ab;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* PRIVACY NOTICE */
+
+.privacy-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 17px;
+    margin-bottom: 24px;
+    border: 1px solid #e9e5ff;
+    border-radius: 14px;
+    background: #f6f4ff;
+}
+
+.privacy-notice > span {
+    font-size: 23px;
+}
+
+.privacy-notice strong {
+    display: block;
+    color: #5148d8;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.privacy-notice p {
+    color: #77768a;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* SUBMIT BUTTON */
+
+.submit-button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 13px;
+    background: #6c63ff;
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    transition: 0.25s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: #5148d8;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2);
+}
+
+.submit-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.cancel-link {
+    display: block;
+    margin-top: 18px;
+    color: #8178ff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cancel-link:hover {
+    text-decoration: underline;
+}
+
+/* FEEDBACK MESSAGES */
+
+.form-message {
+    padding: 25px;
+    text-align: center;
+    color: #77768a;
+    font-size: 13px;
+}
+
+.form-message[hidden],
+.submit-error[hidden],
+.success-message[hidden] {
+    display: none !important;
+}
+
+.error-message {
+    color: #d64c63;
+}
+
+.error-message .secondary-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 11px 18px;
+    border-radius: 10px;
+    background: #eeecff;
+    color: #6258e9;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.success-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccefe0;
+    border-radius: 13px;
+    background: #edfbf4;
+}
+
+.success-message > span {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #27c99a;
+    color: white;
+    font-weight: 800;
+}
+
+.success-message strong {
+    color: #13835f;
+    font-size: 13px;
+}
+
+.success-message p {
+    margin-top: 5px;
+    color: #548b76;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.submit-error {
+    padding: 13px;
+    margin-bottom: 17px;
+    border-radius: 11px;
+    background: #fff0f2;
+    color: #c64d63;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    .claim-navbar {
+        flex-wrap: wrap;
+        padding: 14px 5%;
+    }
+
+    .claim-navbar .brand {
+        font-size: 24px;
+    }
+
+    .claim-navbar nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 22px;
+    }
+
+    .claim-navbar nav a {
+        font-size: 12px;
+    }
+
+    .claim-navbar .back-button {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .claim-container {
+        margin-top: 28px;
+    }
+
+    .claim-card {
+        padding: 22px 17px;
+        border-radius: 19px;
+    }
+
+    .claim-heading h1 {
+        font-size: 26px;
+    }
+
+    .item-summary {
+        gap: 12px;
+        padding: 11px;
+    }
+
+    .summary-image {
+        width: 70px;
+        height: 70px;
+    }
+}

@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/notifications.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/components/chatbot.css">
+
+    <script src="../js/dashboard.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <header class="dashboard-navbar">
+
+        <a href="/" class="brand">
+            Find<span>It.</span>
+        </a>
+
+        <div class="nav-right">
+
+            <div class="notification-wrapper">
+
+                <button
+                    type="button"
+                    id="notification-btn"
+                    class="notification-btn"
+                    aria-label="Open notifications"
+                    aria-expanded="false"
+                    aria-controls="notification-panel">
+
+                    <svg
+                        class="notification-bell"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="23"
+                        height="23"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true">
+
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+                        <path d="M10 21h4"/>
+
+                    </svg>
+
+                    <span
+                        id="notification-count"
+                        class="notification-count"
+                        hidden>
+                        0
+                    </span>
+
+                </button>
+
+                <div
+                    id="notification-panel"
+                    class="notification-panel"
+                    hidden>
+
+                    <div class="notification-header">
+
+                        <div>
+                            <h3>Notifications</h3>
+
+                            <p id="notification-summary">
+                                Stay updated with FindIt.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="mark-all-read-btn"
+                            class="mark-all-read-btn">
+                            Mark all read
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="notification-list"
+                        class="notification-list"
+                        aria-live="polite">
+
+                        <p class="notification-loading">
+                            Loading notifications...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <span id="user-name">Loading...</span>
+
+        </div>
+
+    </header>
+
+    <main class="dashboard-container">
+
+        <section class="welcome-section">
+
+            <div class="welcome-content">
+
+                <p class="eyebrow">
+                    STUDENT DASHBOARD
+                </p>
+
+                <h1>
+                    Welcome back,
+                    <span id="welcome-name">Student</span>!
+                </h1>
+
+                <p class="welcome-description">
+                    Let's help lost belongings find their way home.
+                </p>
+
+            </div>
+
+            <div class="welcome-icon">
+                🔎
+            </div>
+
+        </section>
+
+        <section class="dashboard-actions">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>What would you like to do?</h2>
+
+                    <p class="section-subtitle">
+                        Choose an action to get started with FindIt.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="action-grid">
+
+                <a href="browse.html" class="action-card browse-card">
+
+                    <div class="action-icon browse-icon">
+                        🔍
+                    </div>
+
+                    <h3>Browse Items</h3>
+
+                    <p>
+                        Explore lost and found items reported
+                        by your university community.
+                    </p>
+
+                    <span class="action-link">
+                        Explore items →
+                    </span>
+
+                </a>
+
+                <a href="report-lost.html" class="action-card lost-card">
+
+                    <div class="action-icon lost-icon">
+                        📦
+                    </div>
+
+                    <h3>Report Lost Item</h3>
+
+                    <p>
+                        Tell the university community about
+                        something you have lost.
+                    </p>
+
+                    <span class="action-link">
+                        Report an item →
+                    </span>
+
+                </a>
+
+                <a href="report-found.html" class="action-card found-card">
+
+                    <div class="action-icon found-icon">
+                        🎒
+                    </div>
+
+                    <h3>Report Found Item</h3>
+
+                    <p>
+                        Help another student recover
+                        their missing belongings.
+                    </p>
+
+                    <span class="action-link">
+                        Report found item →
+                    </span>
+
+                </a>
+
+                <a href="received-claims.html"
+                   class="action-card claims-card">
+
+                    <div class="action-icon claims-icon">
+                        📋
+                    </div>
+
+                    <h3>Received Claims</h3>
+
+                    <p>
+                        Review ownership requests submitted
+                        by students for items you reported as found.
+                    </p>
+
+                    <span class="action-link">
+                        Review claims →
+                    </span>
+
+                </a>
+
+                <a href="my-claims.html"
+                   class="action-card my-claims-card">
+
+                    <div class="action-icon my-claims-icon">
+                        📄
+                    </div>
+
+                    <h3>My Submitted Claims</h3>
+
+                    <p>
+                        Track your ownership requests and
+                        check whether the finder approved or rejected them.
+                    </p>
+
+                    <span class="action-link">
+                        Track my claims →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="dashboard-note">
+
+            <div class="note-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h3>A little reminder</h3>
+
+                <p>
+                    Never share passwords or sensitive personal
+                    information when claiming an item.
+                    FindIt will help guide the process.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="../js/components/logout-widget.js"></script>
+    <script src="../js/components/chatbot.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Item Details | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/item-details.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/item-details.js" defer></script>
+</head>
+
+<body class="item-details-page">
+
+    <header class="details-navbar">
+        <a href="../index.html" class="brand">
+            Find<span>It.</span>
+        </a>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="browse.html">Browse Items</a>
+        </nav>
+
+        <a href="browse.html" class="back-button">
+            ← Back to Browse
+        </a>
+    </header>
+
+    <main class="details-container">
+
+        <div class="details-breadcrumb">
+            <a href="browse.html">Browse Items</a>
+            <span>/</span>
+            <span>Item Details</span>
+        </div>
+
+        <div id="loading-message" class="details-state">
+            <div class="loading-spinner"></div>
+            <p>Finding your item details...</p>
+        </div>
+
+        <div id="error-message" class="details-state error-state" hidden>
+            <div class="state-icon">😕</div>
+            <h2>Item not available</h2>
+            <p id="error-text">
+                We couldn't find this item.
+            </p>
+            <a href="browse.html" class="primary-button">
+                Back to Browse Items
+            </a>
+        </div>
+
+        <section id="item-content" class="item-content" hidden>
+
+            <div class="item-details-grid">
+
+                <!-- ITEM IMAGE -->
+                <div class="details-image-section">
+
+                    <div class="details-image-wrapper">
+                        <img
+                            id="item-image"
+                            alt="Reported item picture"
+                            hidden
+                        >
+
+                        <div id="image-placeholder" class="details-image-placeholder">
+                            📦
+                            <span>No picture available</span>
+                        </div>
+                    </div>
+
+                    <div class="image-caption">
+                        <span>📸</span>
+                        Item picture submitted by the reporter
+                    </div>
+
+                </div>
+
+                <!-- ITEM INFORMATION -->
+                <div class="details-info-section">
+
+                    <div class="details-status-row">
+                        <span id="item-type" class="details-type"></span>
+                        <span id="item-category" class="details-category"></span>
+                    </div>
+
+                    <p class="details-eyebrow">ITEM INFORMATION</p>
+
+                    <h1 id="item-title">Loading item...</h1>
+
+                    <p id="item-description" class="details-description"></p>
+
+                    <div class="details-divider"></div>
+
+                    <div class="information-list">
+
+                        <div class="information-item">
+                            <div class="information-icon">📍</div>
+                            <div>
+                                <span>Location</span>
+                                <strong id="item-location"></strong>
+                            </div>
+                        </div>
+
+                        <div class="information-item">
+                            <div class="information-icon">📅</div>
+                            <div>
+                                <span>Date reported as lost/found</span>
+                                <strong id="item-date"></strong>
+                            </div>
+                        </div>
+
+                        <div class="information-item">
+                            <div class="information-icon">👤</div>
+                            <div>
+                                <span>Reported by</span>
+                                <strong id="item-reporter"></strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="details-divider"></div>
+
+                    <div class="claim-information">
+                        <div class="claim-icon">💜</div>
+                        <div>
+                            <h3>Is this your belonging?</h3>
+                            <p>
+                                If you believe this item belongs to you,
+                                you can proceed to the ownership claim process.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="claim-button"
+                        class="primary-button claim-button"
+                    >
+                        Start Ownership Claim →
+                    </button>
+
+                    <p class="claim-note">
+                        Ownership verification is required before an item
+                        can be returned.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+<script src="../js/components/logout-widget.js"></script>
+</body>
+</html>

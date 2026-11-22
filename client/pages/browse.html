@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Browse Items | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/browse.css">
+    <link rel="stylesheet" href="../css/pages/browse-images.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/browse.js" defer></script>
+</head>
+
+<body class="browse-page">
+
+    <!-- NAVIGATION -->
+    <header class="browse-navbar">
+
+        <a href="/" class="brand" aria-label="FindIt homepage">
+            Find<span>It.</span>
+        </a>
+
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="browse.html" class="active">Browse Items</a>
+        </nav>
+
+        <a href="dashboard.html" class="back-link">
+            My Dashboard
+        </a>
+
+    </header>
+
+    <main class="browse-container">
+
+        <!-- HERO AREA -->
+        <section class="hero-stage">
+
+            <div class="floating-card floating-left">
+
+                <div class="floating-card-icon backpack-icon">🎒</div>
+
+                <div class="floating-card-text">
+                    <span>LOST SOMETHING?</span>
+                    <strong>Let's find it!</strong>
+                </div>
+
+                <div class="floating-card-decoration">✦</div>
+
+            </div>
+
+            <div class="browse-heading">
+
+                <span class="eyebrow">
+                    UNIVERSITY LOST & FOUND
+                </span>
+
+                <h1>
+                    Find what you're<br class="desktop-break">
+                    looking for.
+                </h1>
+
+                <p>
+                    Explore items reported lost or found around your university.
+                </p>
+
+                <div class="hero-pills">
+                    <span>🔎 Discover</span>
+                    <span>🤝 Connect</span>
+                    <span>💜 Recover</span>
+                </div>
+
+            </div>
+
+            <div class="floating-card floating-right">
+
+                <div class="floating-card-icon found-icon">🎧</div>
+
+                <div class="floating-card-text">
+                    <span>FOUND SOMETHING?</span>
+                    <strong>Be someone's hero!</strong>
+                </div>
+
+                <div class="floating-card-decoration">✨</div>
+
+            </div>
+
+        </section>
+
+        <!-- SEARCH SECTION -->
+        <section class="search-section">
+
+            <div class="search-intro">
+
+                <div>
+                    <span class="search-label">START YOUR SEARCH</span>
+                    <h2>What are you looking for?</h2>
+                </div>
+
+                <span class="search-decoration">🔍</span>
+
+            </div>
+
+            <div class="search-box">
+
+                <span class="search-icon">🔎</span>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search by item name, description or location..."
+                    aria-label="Search items"
+                >
+
+            </div>
+
+            <div class="filter-row">
+
+                <select id="category-filter" aria-label="Filter by category">
+
+                    <option value="">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Books">Books</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Other">Other</option>
+
+                </select>
+
+                <select id="type-filter" aria-label="Filter by item type">
+
+                    <option value="">Lost & Found</option>
+                    <option value="lost">Lost Items</option>
+                    <option value="found">Found Items</option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- RESULTS -->
+        <section class="results-section">
+
+            <div class="results-heading">
+
+                <div>
+                    <span class="results-label">THE COMMUNITY BOARD</span>
+                    <h2>Recently Reported Items</h2>
+                </div>
+
+                <span id="results-count">Loading...</span>
+
+            </div>
+
+            <div id="loading-message" class="state-message">
+                Loading items...
+            </div>
+
+            <div id="items-container" class="items-grid"></div>
+
+            <div id="empty-message" class="state-message" hidden>
+
+                <div class="empty-icon">🔎</div>
+
+                <h3>No items found</h3>
+
+                <p>
+                    Nothing here yet. Try another search or change your filters.
+                </p>
+
+            </div>
+
+            <div id="error-message" class="state-message error-message" hidden>
+
+                Unable to load items. Please try again.
+
+                <button id="retry-btn" type="button">
+                    Try Again
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+<script src="../js/components/logout-widget.js"></script>
+</body>
+</html>
