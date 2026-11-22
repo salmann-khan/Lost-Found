@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages/received-claims.css">
     <link rel="stylesheet" href="../css/animations.css">
 
@@ -18,7 +19,6 @@
 <body class="received-claims-page">
 
     <header class="claims-navbar">
-
         <a href="../index.html" class="brand">
             Find<span>It.</span>
         </a>
@@ -31,18 +31,14 @@
         <a href="dashboard.html" class="back-button">
             ← Dashboard
         </a>
-
     </header>
 
     <main class="claims-container">
 
         <section class="claims-hero">
-
             <div>
                 <p class="claims-eyebrow">CLAIM MANAGEMENT</p>
-
                 <h1>Received Claims</h1>
-
                 <p>
                     Review ownership requests submitted for items
                     you reported as found.
@@ -50,7 +46,6 @@
             </div>
 
             <div class="claims-hero-icon">📋</div>
-
         </section>
 
         <section class="claims-stats">
@@ -103,7 +98,6 @@
             </div>
 
             <div class="claims-filter">
-
                 <button class="filter-button active" data-filter="all">
                     All claims
                 </button>
@@ -119,7 +113,6 @@
                 <button class="filter-button" data-filter="rejected">
                     Rejected
                 </button>
-
             </div>
 
             <div id="claims-loading" class="claims-state">
@@ -166,7 +159,6 @@
     <!-- Claim review dialog -->
 
     <div id="review-modal" class="review-modal" hidden>
-
         <div class="review-modal-content">
 
             <button
@@ -184,7 +176,6 @@
             <p id="modal-item-title" class="modal-item-title"></p>
 
             <div class="review-information">
-
                 <div>
                     <span>Claimant</span>
                     <strong id="modal-claimant"></strong>
@@ -199,7 +190,6 @@
                     <span>Private identifying details</span>
                     <p id="modal-identifying-details"></p>
                 </div>
-
             </div>
 
             <label for="review-note">Review note (optional)</label>
@@ -213,7 +203,6 @@
             <p id="review-error" class="review-error" hidden></p>
 
             <div class="review-actions">
-
                 <button type="button" id="reject-claim" class="reject-button">
                     Reject claim
                 </button>
@@ -221,12 +210,11 @@
                 <button type="button" id="approve-claim" class="approve-button">
                     Approve claim
                 </button>
-
             </div>
 
         </div>
-
     </div>
-<script src="../js/components/logout-widget.js"></script>
+
+    <script src="../js/components/logout-widget.js"></script>
 </body>
 </html>

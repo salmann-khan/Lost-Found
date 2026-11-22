@@ -31,11 +31,104 @@ function formatDate(dateValue) {
     });
 }
 
+// Custom FindIt confirmation modal
+function showConfirmModal({
+    title,
+    message,
+    confirmText = "Confirm",
+    cancelText = "Cancel",
+    danger = false
+}) {
+    return new Promise(resolve => {
+        const overlay = document.createElement("div");
+        overlay.className = "findit-modal-overlay";
+
+        overlay.innerHTML = `
+            <div class="findit-confirm-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="findit-modal-title">
+
+                <div class="findit-modal-icon ${danger ? "danger" : ""}">
+                    ${danger ? "!" : "?"}
+                </div>
+
+                <h2 id="findit-modal-title">${escapeHTML(title)}</h2>
+                <p>${escapeHTML(message)}</p>
+
+                <div class="findit-modal-actions">
+                    <button type="button"
+                            class="findit-modal-cancel">
+                        ${escapeHTML(cancelText)}
+                    </button>
+
+                    <button type="button"
+                            class="findit-modal-confirm ${danger ? "danger" : ""}">
+                        ${escapeHTML(confirmText)}
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = "hidden";
+
+        const cancelButton = overlay.querySelector(".findit-modal-cancel");
+        const confirmButton = overlay.querySelector(".findit-modal-confirm");
+
+        function close(result) {
+            overlay.remove();
+            document.body.style.overflow = "";
+            document.removeEventListener("keydown", handleKeydown);
+            resolve(result);
+        }
+
+        function handleKeydown(event) {
+            if (event.key === "Escape") close(false);
+        }
+
+        cancelButton.addEventListener("click", () => close(false));
+        confirmButton.addEventListener("click", () => close(true));
+
+        overlay.addEventListener("click", event => {
+            if (event.target === overlay) close(false);
+        });
+
+        document.addEventListener("keydown", handleKeydown);
+
+        confirmButton.focus();
+    });
+}
+
 function showClaimFeedback(message, type = "success") {
     if (window.FindItFeedback?.show) {
         window.FindItFeedback.show(message, type);
     } else {
-        alert(message);
+        const overlay = document.createElement("div");
+        overlay.className = "findit-modal-overlay";
+
+        overlay.innerHTML = `
+            <div class="findit-confirm-modal">
+                <div class="findit-modal-icon ${type === "error" ? "danger" : ""}">
+                    ${type === "error" ? "!" : "✓"}
+                </div>
+                <h2>${type === "error" ? "Something went wrong" : "Success"}</h2>
+                <p>${escapeHTML(message)}</p>
+                <div class="findit-modal-actions">
+                    <button type="button" class="findit-modal-confirm">
+                        OK
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = "hidden";
+
+        overlay.querySelector("button").addEventListener("click", () => {
+            overlay.remove();
+            document.body.style.overflow = "";
+        });
     }
 }
 
@@ -187,9 +280,12 @@ function renderClaims() {
 async function confirmItemReceived(claimId) {
     if (confirmingClaimId) return;
 
-    const confirmed = window.confirm(
-        "Have you physically received this item from the finder? Confirming will mark it as recovered."
-    );
+    const confirmed = await showConfirmModal({
+        title: "Confirm item received?",
+        message: "Have you physically received this item from the finder? Confirming will mark it as recovered.",
+        confirmText: "Yes, I received it",
+        cancelText: "Not yet"
+    });
 
     if (!confirmed) return;
 

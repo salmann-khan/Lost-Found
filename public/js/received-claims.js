@@ -39,6 +39,100 @@ document.addEventListener("DOMContentLoaded", () => {
     let loadingClaims = false;
     let reviewingClaim = false;
 
+    function escapeHTML(value = "") {
+        return String(value).replace(/[&<>"']/g, character => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[character]);
+    }
+
+    function showFindItModal({
+        title,
+        message,
+        confirmText = "Confirm",
+        cancelText = "Cancel",
+        danger = false,
+        showCancel = true
+    }) {
+        return new Promise(resolve => {
+            const overlay = document.createElement("div");
+            overlay.className = "findit-modal-overlay";
+
+            overlay.innerHTML = `
+                <div class="findit-confirm-modal"
+                     role="dialog"
+                     aria-modal="true"
+                     aria-labelledby="findit-modal-title">
+
+                    <div class="findit-modal-icon ${danger ? "danger" : ""}">
+                        ${danger ? "!" : "?"}
+                    </div>
+
+                    <h2 id="findit-modal-title">
+                        ${escapeHTML(title)}
+                    </h2>
+
+                    <p>${escapeHTML(message)}</p>
+
+                    <div class="findit-modal-actions">
+                        ${showCancel ? `
+                            <button type="button"
+                                    class="findit-modal-cancel">
+                                ${escapeHTML(cancelText)}
+                            </button>
+                        ` : ""}
+
+                        <button type="button"
+                                class="findit-modal-confirm ${danger ? "danger" : ""}">
+                            ${escapeHTML(confirmText)}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+            document.body.style.overflow = "hidden";
+
+            const confirm = overlay.querySelector(".findit-modal-confirm");
+            const cancel = overlay.querySelector(".findit-modal-cancel");
+
+            let closed = false;
+
+            function close(result) {
+                if (closed) return;
+                closed = true;
+
+                overlay.remove();
+                document.body.style.overflow = "";
+                document.removeEventListener("keydown", handleKeydown);
+
+                resolve(result);
+            }
+
+            function handleKeydown(event) {
+                if (event.key === "Escape") {
+                    close(false);
+                }
+            }
+
+            confirm.addEventListener("click", () => close(true));
+
+            if (cancel) {
+                cancel.addEventListener("click", () => close(false));
+            }
+
+            overlay.addEventListener("click", event => {
+                if (event.target === overlay) close(false);
+            });
+
+            document.addEventListener("keydown", handleKeydown);
+            confirm.focus();
+        });
+    }
+
     function formatDate(dateValue) {
         if (!dateValue) return "Date unavailable";
 
@@ -338,11 +432,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const message = status === "approved"
-            ? "Are you sure you want to approve this ownership claim?"
-            : "Are you sure you want to reject this ownership claim?";
+        const isApproval = status === "approved";
 
-        if (!window.confirm(message)) return;
+        const confirmed = await showFindItModal({
+            title: isApproval ? "Approve this claim?" : "Reject this claim?",
+            message: isApproval
+                ? "Are you sure you want to approve this ownership claim?"
+                : "Are you sure you want to reject this ownership claim?",
+            confirmText: isApproval ? "Yes, approve" : "Yes, reject",
+            cancelText: "Go back",
+            danger: !isApproval
+        });
+
+        if (!confirmed || !selectedClaim) return;
 
         reviewingClaim = true;
 
@@ -350,10 +452,10 @@ document.addEventListener("DOMContentLoaded", () => {
         rejectButton.disabled = true;
 
         approveButton.textContent =
-            status === "approved" ? "Approving..." : "Approve claim";
+            isApproval ? "Approving..." : "Approve claim";
 
         rejectButton.textContent =
-            status === "rejected" ? "Rejecting..." : "Reject claim";
+            !isApproval ? "Rejecting..." : "Reject claim";
 
         reviewError.hidden = true;
 
@@ -415,11 +517,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (reviewSucceeded) {
             await loadClaims();
 
-            window.alert(
-                status === "approved"
+            showFindItModal({
+                title: isApproval ? "Claim approved!" : "Claim rejected",
+                message: isApproval
                     ? "Ownership claim approved successfully."
-                    : "Ownership claim rejected successfully."
-            );
+                    : "Ownership claim rejected successfully.",
+                confirmText: "Done",
+                showCancel: false
+            });
         }
     }
 
