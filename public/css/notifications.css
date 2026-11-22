@@ -1,0 +1,355 @@
+
+/* =====================================
+   FINDIT - DASHBOARD NOTIFICATIONS
+===================================== */
+
+/* Notification wrapper */
+
+.notification-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Notification bell button */
+
+.notification-btn {
+    position: relative;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ECEAF8;
+    border-radius: 13px;
+    background: #FFFFFF;
+    color: #6258F5;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.notification-btn:hover {
+    background: #F3F1FF;
+    border-color: #DAD5FF;
+}
+
+/* SVG bell icon */
+
+.notification-bell {
+    display: block;
+    width: 23px;
+    height: 23px;
+    color: #6258F5;
+    transform-box: fill-box;
+    transform-origin: 50% 10%;
+}
+
+/* Continuous ringing while unread notifications exist */
+
+.notification-btn.has-unread .notification-bell {
+    animation: finditBellRing 0.8s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes finditBellRing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(15deg);
+    }
+
+    30% {
+        transform: rotate(-15deg);
+    }
+
+    45% {
+        transform: rotate(13deg);
+    }
+
+    60% {
+        transform: rotate(-13deg);
+    }
+
+    75% {
+        transform: rotate(7deg);
+    }
+
+    90% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* Unread count badge */
+
+.notification-count {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    background: #F05B78;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.notification-count[hidden] {
+    display: none;
+}
+
+/* Notification dropdown */
+
+.notification-panel {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    width: 390px;
+    max-height: 520px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid #ECEAF8;
+    border-radius: 17px;
+    box-shadow: 0 18px 50px rgba(35, 30, 85, 0.15);
+    z-index: 1000;
+    animation: notificationAppear 0.22s ease;
+}
+
+.notification-panel[hidden] {
+    display: none;
+}
+
+@keyframes notificationAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dropdown header */
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 19px 18px;
+    border-bottom: 1px solid #F0EEF8;
+}
+
+.notification-header h3 {
+    margin: 0;
+    color: #28243D;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.notification-header p {
+    margin: 5px 0 0;
+    color: #8A879E;
+    font-size: 12px;
+}
+
+.mark-all-read-btn {
+    border: none;
+    background: transparent;
+    color: #6558DC;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.mark-all-read-btn:hover {
+    text-decoration: underline;
+}
+
+.mark-all-read-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Notification list */
+
+.notification-list {
+    max-height: 410px;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.notification-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+    background: #DCD8F3;
+    border-radius: 10px;
+}
+
+/* Individual notification */
+
+.notification-item {
+    padding: 15px;
+    margin-bottom: 7px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: #FFFFFF;
+    transition: 0.2s ease;
+}
+
+.notification-item:hover {
+    background: #FAF9FF;
+    border-color: #ECEAF8;
+}
+
+.notification-item.unread {
+    background: #F7F5FF;
+    border-color: #EBE7FF;
+}
+
+.notification-item-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.notification-item h4 {
+    margin: 0;
+    color: #302B49;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.notification-status {
+    flex-shrink: 0;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background: #EDEAFF;
+    color: #6558DC;
+    font-size: 9px;
+    font-weight: 750;
+}
+
+.notification-item:not(.unread) .notification-status {
+    background: #F1F1F5;
+    color: #858397;
+}
+
+/* Notification message */
+
+.notification-message {
+    margin: 9px 0;
+    color: #77748A;
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Notification details */
+
+.notification-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.notification-score {
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #E4F8EF;
+    color: #159B78;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.notification-date {
+    color: #A09CAF;
+    font-size: 10px;
+}
+
+/* View matching item link */
+
+.notification-view-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #6558DC;
+    font-size: 11px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.notification-view-link:hover {
+    text-decoration: underline;
+}
+
+/* Empty notification state */
+
+.notification-empty {
+    padding: 35px 15px;
+    text-align: center;
+}
+
+.notification-empty > div {
+    margin-bottom: 12px;
+    font-size: 35px;
+}
+
+.notification-empty h4 {
+    margin: 0 0 8px;
+    color: #302B49;
+    font-size: 14px;
+}
+
+.notification-empty p {
+    margin: 0;
+    color: #8A879E;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.notification-loading {
+    padding: 25px 15px;
+    color: #89869B;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+    .notification-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .notification-panel {
+        position: fixed;
+        top: 76px;
+        right: 4%;
+        width: 92%;
+        max-width: 390px;
+        max-height: 70vh;
+    }
+
+    .notification-list {
+        max-height: calc(70vh - 90px);
+    }
+}

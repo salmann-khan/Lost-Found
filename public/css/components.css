@@ -1,0 +1,45 @@
+
+/* FINDIT - SHARED COMPONENTS */
+
+button,
+.button {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover,
+.button:hover {
+    transform: translateY(-2px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(108, 99, 255, 0.35);
+    outline-offset: 3px;
+}
+
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(40, 36, 61, 0.07);
+}
+
+.primary-button {
+    background: #6C63FF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: 700;
+}
+
+.primary-button:hover {
+    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.25);
+}

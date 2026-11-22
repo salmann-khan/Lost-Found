@@ -1,0 +1,64 @@
+
+/* FINDIT - BROWSE ITEM IMAGES */
+
+.item-card {
+    overflow: hidden;
+}
+
+.item-image-wrapper {
+    width: 100%;
+    height: 205px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    background: #f1efff;
+}
+
+.item-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.item-image.is-loaded {
+    opacity: 1;
+}
+
+.item-card:hover .item-image.is-loaded {
+    transform: scale(1.06);
+}
+
+.item-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 20% 20%, #fff0dc, transparent 40%),
+        linear-gradient(135deg, #eeecff, #f8f5ff);
+    font-size: 58px;
+}
+
+.item-image-placeholder[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    .item-image-wrapper {
+        height: 190px;
+    }
+}
+
+@media (max-width: 520px) {
+    .item-image-wrapper {
+        height: 220px;
+    }
+}

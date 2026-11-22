@@ -1,56 +1,53 @@
+
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-const crypto = require("crypto");
+const { v2: cloudinary } = require("cloudinary");
 
-const uploadDirectory = path.join(
-    __dirname,
-    "../../uploads/items"
-);
-
-fs.mkdirSync(uploadDirectory, { recursive: true });
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, uploadDirectory);
-    },
-
-    filename: (req, file, cb) => {
-        const extension = path.extname(file.originalname).toLowerCase();
-        cb(null, `${crypto.randomUUID()}${extension}`);
-    }
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const allowedTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/webp"
-];
-
-const fileFilter = (req, file, cb) => {
-    if (allowedTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(new Error("Only JPG, PNG, and WebP images are allowed."));
-    }
-};
+const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
 
 const upload = multer({
-    storage,
-    fileFilter,
+    storage: multer.memoryStorage(),
+    fileFilter: (req, file, cb) => {
+        if (allowedTypes.includes(file.mimetype)) {
+            cb(null, true);
+        } else {
+            cb(new Error("Only JPG, PNG, and WebP images are allowed."));
+        }
+    },
     limits: {
-        fileSize: 5 * 1024 * 1024
+        fileSize: 4 * 1024 * 1024
     }
 });
 
-// Handle upload errors and return JSON responses.
+const uploadToCloudinary = (buffer) => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            {
+                folder: "findit/items",
+                resource_type: "image"
+            },
+            (error, result) => {
+                if (error) return reject(error);
+                resolve(result);
+            }
+        );
+
+        stream.end(buffer);
+    });
+};
+
 const uploadItemImage = (req, res, next) => {
-    upload.single("image")(req, res, (error) => {
+    upload.single("image")(req, res, async (error) => {
         if (error) {
             let message = error.message;
 
             if (error.code === "LIMIT_FILE_SIZE") {
-                message = "Image size must not exceed 5 MB.";
+                message = "Image size must not exceed 4 MB.";
             }
 
             return res.status(400).json({
@@ -59,7 +56,20 @@ const uploadItemImage = (req, res, next) => {
             });
         }
 
-        next();
+        if (!req.file) return next();
+
+        try {
+            const result = await uploadToCloudinary(req.file.buffer);
+            req.file.cloudinaryUrl = result.secure_url;
+            next();
+        } catch (uploadError) {
+            console.error("Cloudinary upload error:", uploadError);
+
+            return res.status(500).json({
+                success: false,
+                message: "Unable to upload image. Please try again."
+            });
+        }
     });
 };
 

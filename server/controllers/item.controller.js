@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const Item = require("../models/Item");
 const { findMatches } = require("../services/matching.service");
@@ -204,8 +205,9 @@ const createItem = async (req, res) => {
             });
         }
 
+        // Save the permanent Cloudinary image URL.
         const imageUrl = req.file
-            ? `/uploads/items/${req.file.filename}`
+            ? req.file.cloudinaryUrl
             : "";
 
         const item = await Item.create({

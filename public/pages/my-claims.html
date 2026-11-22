@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Submitted Claims | FindIt</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/my-claims.css">
+</head>
+<body>
+    <header class="claims-header">
+        <a href="dashboard.html" class="brand">Find<span>It</span></a>
+        <a href="dashboard.html" class="back-link">← Dashboard</a>
+    </header>
+
+    <main class="claims-container">
+        <section class="page-heading">
+            <p class="eyebrow">CLAIM MANAGEMENT</p>
+            <h1>My Submitted Claims</h1>
+            <p>Track the status of items you have claimed.</p>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>Total Claims</span>
+                <strong id="totalClaims">0</strong>
+            </article>
+            <article class="stat-card pending">
+                <span>Pending</span>
+                <strong id="pendingClaims">0</strong>
+            </article>
+            <article class="stat-card approved">
+                <span>Approved</span>
+                <strong id="approvedClaims">0</strong>
+            </article>
+            <article class="stat-card rejected">
+                <span>Rejected</span>
+                <strong id="rejectedClaims">0</strong>
+            </article>
+        </section>
+
+        <section class="claims-section">
+            <div class="section-heading">
+                <h2>Your Claims</h2>
+                <button id="refreshClaims" class="refresh-btn" type="button">↻ Refresh</button>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="approved">Approved</button>
+                <button class="filter-btn" data-filter="rejected">Rejected</button>
+            </div>
+
+            <div id="claimsList" class="claims-list">
+                <p class="loading-message">Loading your claims...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/my-claims.js"></script>
+    <script src="../js/components/logout-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FindIt - Your university's lost and found platform.">
+
+    <title>FindIt | Lost Something? Find It.</title>
+
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <a href="/" class="logo">Find<span>It.</span> </a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="#browse">Browse Items</a>
+            <a href="#how-it-works">How It Works</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <select id="language-selector" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="ur">اردو</option>
+            </select>
+
+            <!-- Guest navigation -->
+            <a href="/pages/login.html"
+               class="login-btn"
+               id="login-link">
+                Login
+            </a>
+
+            <a href="/pages/signup.html"
+               class="signup-btn"
+               id="signup-link">
+                Get Started →
+            </a>
+
+            <!-- Logged-in navigation -->
+            <a href="/pages/dashboard.html"
+               class="login-btn"
+               id="dashboard-link"
+               hidden>
+                Dashboard
+            </a>
+
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+                    🎓 Exclusively for University Students
+                </span>
+
+                <h1>
+                    Lost Something?
+                    <span>Find It.</span>
+                </h1>
+
+                <p>
+                    Don't let a lost item ruin your day.
+                    FindIt connects students with their lost belongings
+                    through a simple and friendly platform.
+                </p>
+
+                <div class="hero-search">
+
+                    <input
+                        type="text"
+                        id="home-search-input"
+                        placeholder="Search for lost items..."
+                        aria-label="Search for lost items"
+                    >
+
+                    <button type="button" id="home-search-button">
+                        Search →
+                    </button>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="/pages/report-lost.html" class="lost-btn">
+                        Report Lost Item
+                    </a>
+
+                    <a href="/pages/report-found.html" class="found-btn">
+                        Report Found Item
+                    </a>
+
+                </div>
+
+                <div class="hero-trust">
+                    🔒 A safer way to reconnect with your belongings
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+            <div class="hero-visual">
+
+                <div class="illustration-circle">
+                    🔎
+                </div>
+
+                <div class="floating-card card-one">
+                    <span>🎒</span>
+                    <div>
+                        <strong>Lost Backpack</strong>
+                        <small>Match found!</small>
+                    </div>
+                </div>
+
+                <div class="floating-card card-two">
+                    <span>📱</span>
+                    <div>
+                        <strong>Phone Recovered</strong>
+                        <small>Successfully returned</small>
+                    </div>
+                </div>
+
+                <div class="illustration-box">
+                    🎓 🤝 ✨
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div>
+                <h2>1,200+</h2>
+                <p>Items Reported</p>
+            </div>
+
+            <div>
+                <h2>850+</h2>
+                <p>Items Recovered</p>
+            </div>
+
+            <div>
+                <h2>95%</h2>
+                <p>Happy Students</p>
+            </div>
+
+            <div>
+                <h2>24/7</h2>
+                <p>Online Access</p>
+            </div>
+
+        </section>
+
+
+        <!-- BROWSE CATEGORIES -->
+        <section class="section" id="browse">
+
+            <div class="section-heading">
+                <span>EXPLORE</span>
+                <h2>Browse Categories</h2>
+                <p>
+                    Find what you're looking for by exploring categories.
+                </p>
+            </div>
+
+            <div class="category-grid">
+
+                <a href="/pages/browse.html?category=Electronics"
+                   class="category-card purple">
+
+                    <div>📱</div>
+                    <h3>Electronics</h3>
+                    <p>Phones, laptops and gadgets</p>
+
+                </a>
+
+                <a href="/pages/browse.html?category=Bags"
+                   class="category-card orange">
+
+                    <div>🎒</div>
+                    <h3>Bags</h3>
+                    <p>Backpacks and handbags</p>
+
+                </a>
+
+                <a href="/pages/browse.html?category=Books"
+                   class="category-card green">
+
+                    <div>📚</div>
+                    <h3>Books</h3>
+                    <p>Books and study materials</p>
+
+                </a>
+
+                <a href="/pages/browse.html?category=Clothing"
+                   class="category-card pink">
+
+                    <div>👕</div>
+                    <h3>Clothing</h3>
+                    <p>Clothes and accessories</p>
+
+                </a>
+
+                <a href="/pages/browse.html?category=Accessories"
+                   class="category-card purple">
+
+                    <div>⌚</div>
+                    <h3>Accessories</h3>
+                    <p>Watches, keys and more</p>
+
+                </a>
+
+                <a href="/pages/browse.html?category=Other"
+                   class="category-card orange">
+
+                    <div>✨</div>
+                    <h3>Other Items</h3>
+                    <p>Everything else</p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="section how-section" id="how-it-works">
+
+            <div class="section-heading">
+                <span>SIMPLE PROCESS</span>
+                <h2>How FindIt Works</h2>
+                <p>
+                    Three simple steps to reconnect with your belongings.
+                </p>
+            </div>
+
+            <div class="steps-grid">
+
+                <div class="step-card">
+                    <div class="step-icon">📝</div>
+                    <span>STEP 01</span>
+                    <h3>Report an Item</h3>
+                    <p>
+                        Report an item you've lost or found.
+                        Add its details and a picture.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🔍</div>
+                    <span>STEP 02</span>
+                    <h3>Find a Match</h3>
+                    <p>
+                        Browse reported items and receive
+                        potential matching notifications.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🤝</div>
+                    <span>STEP 03</span>
+                    <h3>Get It Back</h3>
+                    <p>
+                        Verify ownership and arrange a safe
+                        handover with the finder.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">🎉</div>
+                    <span>STEP 04</span>
+                    <h3>Stay Connected</h3>
+                    <p>
+                        Receive updates and notifications
+                        about your reported items.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALL TO ACTION -->
+        <section class="cta-section">
+
+            <h2>Ready to Find What's Lost?</h2>
+
+            <p>
+                Join your university community and help
+                reconnect people with their belongings.
+            </p>
+
+            <a href="/pages/signup.html">
+                Get Started Today →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo">
+                Find<span>It.</span> 
+            </a>
+
+            <p>
+                Making lost and found simple for university students.
+            </p>
+
+        </div>
+
+
+        <div>
+            <h4>Quick Links</h4>
+
+            <a href="/">Home</a>
+            <a href="/pages/browse.html">Browse Items</a>
+            <a href="/pages/report-lost.html">Report Lost</a>
+            <a href="/pages/report-found.html">Report Found</a>
+
+        </div>
+
+
+        <div>
+            <h4>Account</h4>
+
+            <a href="/pages/login.html">Login</a>
+            <a href="/pages/signup.html">Create Account</a>
+            <a href="/pages/dashboard.html">Dashboard</a>
+
+        </div>
+
+
+        <div>
+            <h4>FindIt</h4>
+
+            <a href="#how-it-works">How It Works</a>
+            <a href="#browse">Categories</a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- CHATBOT BUTTON -->
+    <button type="button"
+            class="chatbot-button"
+            id="chatbot-button"
+            aria-label="Open FindIt Assistant">
+        🤖
+    </button>
+
+
+    <!-- FLOATING LOGOUT WIDGET -->
+    <script src="/js/components/logout-widget.js" defer></script>
+
+    <!-- HOMEPAGE JAVASCRIPT -->
+    <script src="/js/home.js?v=2" defer></script>
+
+</body>
+</html>

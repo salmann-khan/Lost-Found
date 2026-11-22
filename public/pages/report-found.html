@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Found Item | FindIt</title>
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/report-found.css">
+    <link rel="stylesheet" href="../css/pages/report-found-curves.css">
+    <link rel="stylesheet" href="../css/pages/report-found-upload.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <script src="../js/report-found.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Find<span>It.</span></a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="browse.html">Browse Items</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="report-container">
+
+        <section class="visual-section">
+            <div class="visual-content">
+                <span class="visual-tag">GOOD DEEDS START HERE</span>
+
+                <h1>Found something?</h1>
+
+                <p>
+                    Help a fellow student find their lost belongings.
+                    Report the item and let FindIt help reconnect it
+                    with its owner.
+                </p>
+
+                <div class="illustration">
+                    <div class="main-emoji">🎒</div>
+                    <div class="floating-item item-one">🔑</div>
+                    <div class="floating-item item-two">📱</div>
+                    <div class="floating-item item-three">💚</div>
+                </div>
+
+                <div class="visual-note">
+                    <span>✓</span>
+                    One report could make someone's day!
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section">
+
+            <div class="form-heading">
+                <span class="form-label">FOUND ITEM REPORT</span>
+                <h2>Report a found item</h2>
+                <p>Enter the details below to help its owner find it.</p>
+            </div>
+
+            <form id="foundItemForm">
+
+                <div class="form-group">
+                    <label for="itemName">What did you find?</label>
+                    <input
+                        type="text"
+                        id="itemName"
+                        name="title"
+                        placeholder="e.g. Black wallet"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Item category</label>
+
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Books">Books</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Describe the item</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe its colour, appearance, or other useful details..."
+                        maxlength="1000"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Where did you find it?</label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        maxlength="150"
+                        placeholder="e.g. University library"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date found</label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                    >
+                </div>
+
+                <!-- OPTIONAL ITEM PICTURE -->
+                <div class="form-group image-upload-group">
+
+                    <label for="itemImage">Add an item picture (optional)</label>
+
+                    <input
+                        type="file"
+                        id="itemImage"
+                        name="image"
+                        accept="image/jpeg,image/png,image/webp"
+                        hidden
+                    >
+
+                    <label for="itemImage" class="image-upload-button">
+                        <span class="upload-icon">📷</span>
+
+                        <span>
+                            <strong>Choose a picture</strong>
+                            <small>JPG, PNG or WebP · Maximum 5 MB</small>
+                        </span>
+                    </label>
+
+                    <div
+                        id="imagePreviewContainer"
+                        class="image-preview-container"
+                        hidden
+                    >
+                        <img
+                            id="imagePreview"
+                            src=""
+                            alt="Selected found item preview"
+                        >
+
+                        <div class="image-preview-details">
+                            <span id="imageFileName"></span>
+
+                            <button type="button" id="removeImageButton">
+                                Remove picture
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    id="formMessage"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+                <button type="submit" id="submitButton">
+                    Submit Found Report
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div id="successMessage" class="success-message" hidden>
+                <div class="success-icon">✓</div>
+
+                <h3>Report submitted!</h3>
+
+                <p>
+                    Your found item has been reported successfully.
+                    FindIt can now look for a possible matching lost report.
+                </p>
+
+                <a href="browse.html" class="browse-link">
+                    Browse Items →
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+</html>

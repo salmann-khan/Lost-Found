@@ -1,0 +1,141 @@
+
+/* FINDIT - REPORT FOUND IMAGE UPLOAD */
+
+.image-upload-group {
+    margin-top: 3px;
+}
+
+.image-upload-button {
+    min-height: 82px;
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 2px dashed #bcebdc;
+    border-radius: 14px;
+    background: #f5fffb;
+    cursor: pointer;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+}
+
+.image-upload-button:hover {
+    background: #eafff5;
+    border-color: #27b98d;
+    transform: translateY(-2px);
+}
+
+.upload-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: #e4fbf2;
+    border-radius: 12px;
+    font-size: 23px;
+}
+
+.image-upload-button > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.image-upload-button strong {
+    color: #159b78;
+    font-size: 14px;
+}
+
+.image-upload-button small {
+    color: #77768a;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.image-preview-container {
+    margin-top: 14px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f5fffb;
+    border: 1px solid #d8f2e8;
+    border-radius: 13px;
+    animation: foundImagePreviewIn 0.3s ease both;
+}
+
+.image-preview-container[hidden] {
+    display: none !important;
+}
+
+.image-preview-container img {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #e4fbf2;
+}
+
+.image-preview-details {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.image-preview-details span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: #343347;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.image-preview-details button {
+    padding: 7px 11px;
+    border: none;
+    border-radius: 8px;
+    background: #fff0f2;
+    color: #b4233c;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.image-preview-details button:hover {
+    background: #ffdfe5;
+}
+
+.image-upload-button:focus-visible {
+    outline: 3px solid rgba(39, 201, 154, 0.2);
+    outline-offset: 3px;
+}
+
+@keyframes foundImagePreviewIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 420px) {
+    .image-upload-button {
+        padding: 13px;
+    }
+
+    .image-preview-container img {
+        width: 75px;
+        height: 75px;
+    }
+}
