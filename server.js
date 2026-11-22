@@ -1,5 +1,5 @@
 
-require("dotenv").config();
+require("express");
 
 const app = require("./server/app");
 
